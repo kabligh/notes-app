@@ -18,16 +18,16 @@
   // The 'expect' label function:
   function expect(a) {
     return {
-      
+
       toEqual: function(b) {
         if (a !== b) {
-          throw `${a} - DOES NOT EQUAL: ${b}`
+          throw `EXPECTED ${a} TO EQUAL ${b}`
         }
       },
 
       toBeAnArray: function() {
         if (!(a.notes instanceof Array)) {
-          throw `${a} is not an array`
+          throw `EXPECTED ${a} TO BE AN ARRAY`
         }
       }
     }
