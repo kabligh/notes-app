@@ -6,12 +6,12 @@
   function it(desc, callback) {
     try {
       callback();
-      console.log(`Test: ${desc}...`)
-      console.log('Passed!')
+      console.log(`Test: ${desc}...`);
+      console.log('Passed 🥳');
     } catch(error) {
-      console.log('\n')
-      console.log(`Test: ${desc}...`)
-      console.log('Failed!')
+      console.log('\n');
+      console.log(`Test: ${desc}...`);
+      console.log('Failed 😭');
       console.error(error);
     }
   }
@@ -21,13 +21,19 @@
 
       toEqual: function(b) {
         if (a !== b) {
-          throw `EXPECTED ${a} TO EQUAL ${b}`
+          throw `EXPECTED ${a} TO EQUAL ${b}`;
         }
       },
 
       toBeAnArray: function() {
         if (!(a.notes instanceof Array)) {
-          throw `EXPECTED ${a} TO BE AN ARRAY`
+          throw `EXPECTED ${a} TO BE AN ARRAY`;
+        }
+      },
+
+      toBeTrue: function() {
+        if (!a) {
+          throw `${a} IS NOT TRUTHY`;
         }
       }
     }
