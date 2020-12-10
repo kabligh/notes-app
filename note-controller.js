@@ -1,16 +1,17 @@
 "use strict";
 
 class NoteController {
-  constructor(noteList = new NoteList()) {
-    this.noteList = noteList
-    this.noteList.addNote('To do: update only fans')
-    this.noteListView = new NoteListView(noteList)
+  constructor(noteList = new NoteList(), noteListView = new NoteListView(noteList)) {
+    this.noteList = noteList;
+    this.noteList.addNote('To do: update only fans');
+    this.noteListView = noteListView;
   }
 
   getHTML() {
     document.getElementById('app').innerHTML = this.noteListView.display();
+    return this.noteListView.display();
   }
 }
 
-let noteController = new NoteController();
-noteController.getHTML();
+let noteControl = new NoteController();
+noteControl.getHTML();
