@@ -22,6 +22,7 @@ class NoteController {
   };
 
   getNoteIndexFromUrl(location) {
+    console.log()
     return location.hash.split("#")[1].split("/")[1];
   };
 
