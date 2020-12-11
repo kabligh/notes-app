@@ -6,12 +6,12 @@
   function it(desc, callback) {
     try {
       callback();
-      console.log(`Test: ${desc}...`);
-      console.log('Passed 🥳');
+      testResult(`Test: ${desc}...`);
+      testResult('Passed 🥳');
     } catch(error) {
-      console.log('\n');
-      console.log(`Test: ${desc}...`);
-      console.log('Failed 😭');
+      testResult('\n');
+      testResult(`Test: ${desc}...`);
+      testResult('Failed 😭');
       console.error(error);
     }
   }
@@ -37,6 +37,12 @@
         }
       }
     }
+  }
+
+  const page = document.getElementById('tests')
+
+  function testResult(result) {
+    page.innerHTML += `<p>${result}</p>`
   }
 
   exports.it = it;
