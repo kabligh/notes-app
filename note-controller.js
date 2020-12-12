@@ -1,41 +1,34 @@
-"use strict";
+// Update page so it is a list of links to notes
 
-class NoteController {
-  constructor(noteList = new NoteList(), noteListView = new NoteListView(noteList)) {
-    this.noteList = noteList;
-    this.noteList.addNote('To do: update only fans');
-    this.noteList.addNote('To do: call mum');
-    this.noteListView = noteListView;
-  }
+let newNoteList = new NoteList();
+newNoteList.addNote('To do: update only fans');
+newNoteList.addNote('To do: call mum');
+newNoteList.addNote('Christmas shopping: make mum 2021 Hyko calendar');
 
-  getHTML() {
-    document.getElementById('app').innerHTML = this.noteListView.display();
-    return this.noteListView.display();
-  }
+let newNoteListView = new NoteListView(newNoteList)
 
-  makeUrlChangeShowNoteForCurrentPage(){
-    window.addEventListener("hashchange", this.showNoteForCurrentPage);
-  };
-
-  showNoteForCurrentPage(){
-    this.showNote(this.getNoteIndexFromUrl(window.location));
-  };
-
-  getNoteIndexFromUrl(location) {
-    console.log()
-    return location.hash.split("#")[1].split("/")[1];
-  };
-
-  showNote(index) {
-    let singleNote = new SingleNoteView(this.noteList.notes[index]);
-    document
-      .getElementById("app")
-      .innerHTML = singleNote.noteHTML();
-  };
-
-
-}
-
-let noteControl = new NoteController;
+let noteControl = new NoteController(newNoteList, newNoteListView);
 noteControl.getHTML();
-noteControl.makeUrlChangeShowNoteForCurrentPage();
+
+// Switch to single note view
+
+makeUrlChangeShowNoteForCurrentPage();
+
+function makeUrlChangeShowNoteForCurrentPage(){
+  window.addEventListener("hashchange", showNoteForCurrentPage);
+};
+
+function showNoteForCurrentPage(){
+  showNote(getNoteIndexFromUrl(window.location));
+};
+
+function getNoteIndexFromUrl(location) {
+  return location.hash.split("/")[1];
+};
+
+function showNote(index) {
+  let singleNote = new SingleNoteView(newNoteList.notes[index]);
+  document
+    .getElementById("app")
+    .innerHTML = singleNote.noteHTML();
+};
