@@ -5,7 +5,7 @@ newNoteList.addNote('To do: update only fans');
 newNoteList.addNote('To do: call mum');
 newNoteList.addNote('Christmas shopping: make mum 2021 Hyko calendar');
 
-let newNoteListView = new NoteListView(newNoteList)
+let newNoteListView = new NoteListView(newNoteList);
 
 let noteControl = new NoteController(newNoteList, newNoteListView);
 noteControl.getHTML();

@@ -3,7 +3,7 @@
 it('creates and stores an array of notes', function() {
   let myArray = new NoteList();
   myArray.addNote('test note');
-  expect(myArray).toBeAnArray();
+  expect(myArray.notes).toBeAnArray();
   expect(myArray.notes[0].view).toEqual('test note');
 });
 
